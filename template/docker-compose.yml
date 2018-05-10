@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  gocd-server:
+    build: goserver
+    ports:
+      - 8153:8153
+      - 8154:8154
+
+  gocd-agent:
+    build: goagent
+    environment:
+      - GO_SERVER_URL=https://gocd-server:8154/go
+    links:
+      - gocd-server
+    volumes:
+      - shared-volume:/home/go/shared
+volumes:
+  shared-volume:
+    driver: local
