@@ -1,10 +1,13 @@
 FROM registry.docker-cn.com/gocd/gocd-agent-centos-7:v18.3.0
+
+################# Do not change this section ####################
 RUN mkdir /go
 COPY --chown=go:go .ssh /home/go/.ssh
 USER go
 RUN mkdir /home/go/shared
 USER root
 
+################# Install tools in this section #################
 #RUN yum -y --enablerepo=extras install epel-release && yum -y install make gcc libpng-devel python-pip && yum clean all
 #RUN pip install docker-compose --force --upgrade
 #RUN curl -L https://github.com/docker/machine/releases/download/v0.14.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine
@@ -18,4 +21,6 @@ USER root
 #RUN pip install awscli --upgrade --user
 #RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 #RUN /bin/bash -c "source $HOME/.bashrc && nvm install v8.1.4 && npm install yarn -g"
+##################################################################
+
 #USER root
