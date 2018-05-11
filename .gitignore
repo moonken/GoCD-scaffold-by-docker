@@ -1,3 +1,4 @@
 output
+output.*.bak
 .idea
 **/.DS_Store

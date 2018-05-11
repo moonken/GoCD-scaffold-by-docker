@@ -43,8 +43,7 @@ function create_docker_machine {
 }
 
 function gen_passwd_file_for_gocd {
-    mkdir -p output/goserver/godata
-    htpasswd -b -s -c output/goserver/godata/passwd admin $GO_ADMIN_PASSWORD
+    htpasswd -b -s -c output/goserver/passwd admin $GO_ADMIN_PASSWORD
 }
 
 #############################################################
