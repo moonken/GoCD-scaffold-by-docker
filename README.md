@@ -38,3 +38,9 @@ docker-compose up -d --build --scale gocd-agent=$GO_AGENT_NUMBER
 `
 
 GoCD will launch on your docker host's 8153 port.
+
+
+# FAQ
+1. Can not find command when execute job on go agent, for example: can not execute "bash -c 'npm -v'" even you isntalled nodejs on the agent.
+
+   The reason is that go agent runs under a isolation env, it does not load the right PATH variable of user 'go', the solution is to add '-l' as the parameter of bash command, The '-l' forces bash to behave as a login shell, and read the .bashrc/.bash_profile files, refer to [stackoverflow](https://stackoverflow.com/questions/47434160/setting-an-env-variable-accessible-to-the-gocd-pipeline  )
